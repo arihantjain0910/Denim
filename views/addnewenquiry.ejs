@@ -1,0 +1,244 @@
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquiry Form</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+       <style>
+    .required::after {
+      content: " *";
+      color: red;
+    }
+  
+      body {
+        background-color: #f8f9fa;
+      }
+      .form-container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="height: 100px; font-size: 1.5rem;">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+          <img src="https://media.licdn.com/dms/image/C4D0BAQFEhO_RAbTovQ/company-logo_200_200/0/1630499738773?e=2147483647&v=beta&t=0RA-JcGeh_o3Jd2P0ZxUEhiE875FBTbtwVHVk9i2kLs" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+          Sangam India Limited
+        </a>
+        <form action="/logout" method="get">
+          <button type="submit" class="btn btn-primary ">Logout</button>
+        </form>
+      </div>
+  </nav>
+
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-12 form-container">
+          <h2 class="text-center mb-4">New Enquiry Details Form</h2>
+          <form id="inquiryForm" action="/sangam/newinquiryform" method="POST">
+            <!-- <div class="form-group">
+              <label for="line_number">Line Number</label>
+              <input type="number" class="form-control" id="line_number" name="line_number" placeholder="Enter Line number" required>
+            </div> -->
+            <div class="form-group">
+              <label for="employeeName" class="required">Employee Name</label>
+              <input type="text" class="form-control" id="employeeName" name="employeeName" placeholder="Enter Employee Name" value="<%= employeeName %>" readonly>
+          </div>
+          
+          <div class="form-row">
+            
+          <div class="form-group col-md-6">
+            <label for="customerCode" class="required">Customer Code</label>
+            <input type="number" class="form-control" id="customerCode" name="customerCode" placeholder="Enter customer Code"min="0" step="any" required>
+          </div>
+          <div id="suggestions-customerCode" class="suggestions-customerCode"></div>
+          
+          <div class="form-group col-md-6">
+            <label for="customerName" class="required">Customer Name</label>
+            <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Enter The Customer Name"required>
+          </div>
+          <div id="suggestions-customerName" class="suggestions-customerName"></div>
+        </div>
+            <div class="form-group">
+              <label for="material" class="required">Material</label>
+              <input type="text" class="form-control" id="material" name="material" placeholder="Enter Material Code " required>
+            </div>
+            <div id="suggestions-material" class="suggestions-material"></div>
+            <div class="form-group">
+              <label for="material_description" class="required">Material Description</label>
+              <input type="text" class="form-control" id="material_description" name="material_description" placeholder="Enter Material Description" required>
+            </div>
+            <div id="suggestions-material-description" class="suggestions-material-description"></div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="quantity" class="required">Quantity</label>
+                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="Enter Quantity" min="0" step="any"required>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="uom" class="required">Unit Of Measurement (UOM) </label>
+                <input type="text" class="form-control" id="uom" name="uom" placeholder="Enter Unit Of Measurement" min="0" step="any"required>
+              </div>
+            </div>
+            <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="rate" class="required">Rate</label>
+              <input type="float" class="form-control" id="rate" name="rate" placeholder="Enter Rate"min="0" step="any" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="currency" class="required">Currency</label>
+              <input type="text" class="form-control" id="currency" name="currency" placeholder="Enter The Currency"required>
+            </div>
+          </div>
+            <div class="form-group">
+              <label for="validity_date" class="required">Validity Date</label>
+              <input type="date" class="form-control" id="dateInput" name="validity_date" placeholder="Enter Validity Date In Format ddmmyyyy" readonly>
+            </div>
+            <div class="form-group">
+              <label for="remarks">Remarks</label>
+              <input type="text" class="form-control" id="remarks" name="remarks" placeholder="Enter The Remarks" maxlength="50">
+              <small id="charCount" class="form-text text-muted">0 / 50 characters</small> <!-- Character counter -->
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <footer class="bg-light text-center text-lg-start mt-5">
+      <div class="container p-4">
+        <div class="row justify-content-center mb-4">
+          <div>
+            <a class="navbar-brand" href="#">
+              <img src="https://media.licdn.com/dms/image/C4D0BAQFEhO_RAbTovQ/company-logo_200_200/0/1630499738773?e=2147483647&v=beta&t=0RA-JcGeh_o3Jd2P0ZxUEhiE875FBTbtwVHVk9i2kLs" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+              Sangam India Limited
+            </a>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-auto">
+            <h5 class="text-uppercase mb-3">Follow Us</h5>
+            <ul class="list-unstyled d-flex justify-content-center">
+              <li class="mx-2">
+                <a href="https://www.facebook.com/SangamGroupBhilwara/" class="text-dark"><i class="fab fa-facebook-f fa-lg"></i></a>
+              </li>
+              <!-- <li class="mx-2">
+                <a href="#" class="text-dark"><i class="fab fa-twitter fa-lg"></i></a>
+              </li> -->
+              <li class="mx-2">
+                <a href="https://www.instagram.com/sangamgroup_/?hl=en" class="text-dark"><i class="fab fa-instagram fa-lg"></i></a>
+              </li>
+              <li class="mx-2">
+                <a href="https://www.linkedin.com/company/sangam-india-ltd-bhilwara/" class="text-dark"><i class="fab fa-linkedin-in fa-lg"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2024 Sangam India Limited:
+        <a class="text-dark" href="https://sangamgroup.com/">sangamgroup.com</a>
+      </div>
+    </footer>
+    <script>
+    
+  // Function to calculate the date and time 72 hours from now and set it in the date input
+  function setDateInput() {
+      const dateInput = document.getElementById('dateInput');
+
+      // Get the current time
+      const now = new Date();
+
+      // Calculate the time 72 hours from now
+      const futureTime = new Date(now.getTime() + 72 * 60 * 60 * 1000);
+
+      // Set the value of the date input
+      dateInput.value = futureTime.toISOString().split('T')[0];
+  }
+
+
+
+ // Enable the date input before form submission
+       document.getElementById('inquiryForm').addEventListener('submit', function() {
+      const dateInput = document.getElementById('dateInput');
+       dateInput.removeAttribute('readonly'); // Enable the input before submission
+      });
+
+      // Call the function to set the date input value
+      setDateInput();
+  </script>
+    
+ <script>
+  const customerCodeInput = document.getElementById('customerCode');
+  const customerNameInput = document.getElementById('customerName');
+  const materialInput = document.getElementById('material');
+  const materialDescriptionInput = document.getElementById('material_description');
+
+  customerCodeInput.addEventListener('input', function() {
+      const query = customerCodeInput.value;
+      if (query.length >= 2) {
+          fetch(`/getCustomerName?code=${query}`)
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      customerNameInput.value = data.customerName;
+                  } else {
+                      customerNameInput.value = ""; // Clear the input if no matching customer found
+                  }
+              })
+              .catch(error => {
+                  console.error('Error fetching customer name:', error);
+              });
+      } else {
+          customerNameInput.value = ""; // Clear the input if the code is less than 2 characters
+      }
+  });
+
+  materialInput.addEventListener('input', function() {
+      const query = materialInput.value;
+      if (query.length >= 2) {
+          // Fetch material description based on the material input
+          fetch(`/getMaterial?material=${query}`)
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      materialDescriptionInput.value = data.materialDescription;
+                  } else {
+                      materialDescriptionInput.value = ""; // Clear the input if no matching material found
+                  }
+              })
+              .catch(error => {
+                  console.error('Error fetching material description:', error);
+              });
+      } else {
+          materialDescriptionInput.value = ""; // Clear the input if the material input is less than 2 characters
+      }
+  });
+</script>
+<script>
+  // Get the input element
+  var remarksInput = document.getElementById('remarks');
+  // Get the character count element
+  var charCount = document.getElementById('charCount');
+
+  // Add event listener for keyup event on the input field
+  remarksInput.addEventListener('keyup', function() {
+    // Get the length of the input value
+    var charLength = this.value.length;
+    // Update the character count text
+    charCount.textContent = charLength + ' / 50 characters';
+  });
+</script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+  </html>

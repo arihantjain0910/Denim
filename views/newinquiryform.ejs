@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enquiry Form</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    /* Custom styles */
+    /* html, body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    } */
+    /* .form-container {
+      height: 100%;
+      width: 100%;
+      margin: 10px;
+      padding: 10px;
+      background-color: #fff;
+      box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    } */
+    /* .hidden-row {
+      display: none;
+    } */
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="height: 60px; font-size: 1rem;">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+      <a class="navbar-brand" href="#">
+        <img src="https://media.licdn.com/dms/image/C4D0BAQFEhO_RAbTovQ/company-logo_200_200/0/1630499738773?e=2147483647&v=beta&t=0RA-JcGeh_o3Jd2P0ZxUEhiE875FBTbtwVHVk9i2kLs" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+        Sangam India Limited
+      </a>
+      <div class="d-flex">
+        <button onclick="location.href='http://localhost:8080/sangam/addnewenquiry'" class="btn btn-primary mx-2">Add New Enquiry</button>
+        <form action="/logout" method="get">
+          <button type="submit" class="btn btn-primary">Logout</button>
+        </form>
+      </div>
+    </div>
+</nav>
+
+
+<!-- <%= success %> -->
+<form >
+<div class="container mt-5" >
+  <div class="row">
+    <div class="col-md-12 form-container">
+      <h2 class="text-center mt-5" style="color: rgb(233, 30, 30);">New Enquiry Details Form</h2>
+      <form id="inquiryForm" action="/submit" method="POST">
+        
+        <div id="additional-fields">
+          <!-- <div class="form-group">
+            <label for="input1">Customer code</label>
+            <input type="text" class="form-control" id="input1" placeholder="Enter customer code" required>
+          </div>
+          <div class="form-group">
+            <label for="input2">Customer Name</label>
+            <input type="text" class="form-control" id="input2" placeholder="Enter customer name" required> -->
+          <!-- </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-secondary">Reset</button>
+        </div> -->
+      </form>
+      <form action="/submit" method="POST">
+      <div id="table-container" class="mt-5">
+        <!-- <h3 class="text-center mt-4 mb-4">Enquiry Detail</h3> -->
+        <table class="table table-bordered">
+          <form class="form-control"> 
+            <tr style="color:rgb(233, 30, 30); background-color: rgb(219, 219, 219)">
+              <th>Line Number</th>
+              <th>Customer Code</th>
+              <th>Customer Name</th>
+              <th>Material</th>
+              <th>Material Description</th>
+              <th>Quantity</th>
+              <th>UOM</th>
+              <th>Rate</th>
+              <th>Currency</th>
+              <th>Validity Date</th>
+              <th>Remarks</th>
+              <th>Status</th>
+            </tr>
+          </form>
+          <% let lineNumber = 1; %>
+<% for(let enquiry of enquirys){ %>
+  <tr>
+    <td><%= lineNumber %></td>
+    <td><%= enquiry.customerCode %></td>
+    <td><%= enquiry.customerName %></td>
+    <td><%= enquiry.material %></td>
+    <td><%= enquiry.material_description %></td>
+    <td><%= enquiry.quantity %></td>
+    <td><%= enquiry.uom %></td>
+    <td><%= enquiry.rate %></td>
+    <td><%= enquiry.currency %></td>
+    <td><%= enquiry.validity_date %></td>
+    <td><%= enquiry.remarks %></td>
+    <td><%= enquiry.status %></td>
+  </tr>
+  <% lineNumber++; %>
+<% } %>
+         
+          <tbody id="inquiryTableBody">
+            <!-- Dynamic rows will be added here -->
+          </tbody>
+        </table>
+     
+        
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Submit (Send Mail)</button>
+        </div>
+      
+    </form>
+    </div>
+  </div>
+</div>
+
+</form>
+
+<footer class="bg-light text-center text-lg-start mt-5">
+  <div class="container p-4">
+    <div class="row justify-content-center mb-4">
+      <div>
+        <a class="navbar-brand" href="#">
+          <img src="https://media.licdn.com/dms/image/C4D0BAQFEhO_RAbTovQ/company-logo_200_200/0/1630499738773?e=2147483647&v=beta&t=0RA-JcGeh_o3Jd2P0ZxUEhiE875FBTbtwVHVk9i2kLs" alt="Logo" width="30" height="30" class="d-inline-block align-text-top">
+          Sangam India Limited
+        </a>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <h5 class="text-uppercase mb-3">Follow Us</h5>
+        <ul class="list-unstyled d-flex justify-content-center">
+          <li class="mx-2">
+            <a href="https://www.facebook.com/SangamGroupBhilwara/" class="text-dark"><i class="fab fa-facebook-f fa-lg"></i></a>
+          </li>
+          <!-- <li class="mx-2">
+            <a href="#" class="text-dark"><i class="fab fa-twitter fa-lg"></i></a>
+          </li> -->
+          <li class="mx-2">
+            <a href="https://www.instagram.com/sangamgroup_/?hl=en" class="text-dark"><i class="fab fa-instagram fa-lg"></i></a>
+          </li>
+          <li class="mx-2">
+            <a href="https://www.linkedin.com/company/sangam-india-ltd-bhilwara/" class="text-dark"><i class="fab fa-linkedin-in fa-lg"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+    © 2024 Sangam India Limited:
+    <a class="text-dark" href="https://sangamgroup.com/">sangamgroup.com</a>
+  </div>
+</footer>
+<!-- Bootstrap JS and dependencies (jQuery and Popper.js) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+  document.getElementById('inquiryForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
+
+    // Get form values
+    const customerCode = document.getElementById('input1').value;
+    const customerName = document.getElementById('input2').value;
+
+    // Get the table body element
+    const tableBody = document.getElementById('inquiryTableBody');
+
+    // Determine the new line number
+    const newRowNumber = tableBody.rows.length + 1;
+
+    // Create a new table row
+    const newRow = document.createElement('tr');
+    newRow.classList.add('hidden-row');
+
+    // Create and append the cells
+    newRow.innerHTML = `
+      <td>${newRowNumber}</td>
+      <td>${customerCode}</td>
+      <td>${customerName}</td>
+    `;
+
+    // Append the new row to the table body
+    tableBody.appendChild(newRow);
+
+    // Clear the form fields
+    document.getElementById('inquiryForm').reset();
+  });
+
+  document.getElementById('addRowButton').addEventListener('click', function() {
+    // Find the first hidden row and make it visible
+    const hiddenRow = document.querySelector('.hidden-row');
+    if (hiddenRow) {
+      hiddenRow.classList.remove('hidden-row');
+    } else {
+      alert('No more rows to show');
+    }
+  });
+</script>
+</body>
+</html>

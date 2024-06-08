@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding-top: 40px;
+        }
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn-register {
+            width: 100%;
+        }
+        .login-link {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="height: 100px; font-size: 1.5rem;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">
+            <img src="https://media.licdn.com/dms/image/C4D0BAQFEhO_RAbTovQ/company-logo_200_200/0/1630499738773?e=2147483647&v=beta&t=0RA-JcGeh_o3Jd2P0ZxUEhiE875FBTbtwVHVk9i2kLs" alt="Logo" width="60" height="60" class="d-inline-block align-text-top">
+            Sangam India Limited
+          </a>
+        </div>
+    </nav>
+    
+    <div class="container mt-5" >
+        <div class="form-container">
+            <h2>Register</h2>
+            <form method="post" action="/register">
+                <div class="form-group">
+                    <label for="employeeCode">Employee Code:</label>
+                    <input type="text" id="employeeCode" name="employeeCode" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="employeeName">Employee Name:</label>
+                    <input type="text" id="employeeName" name="employeeName" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary btn-register">Register</button>
+                </div>
+            </form>
+            <p class="login-link">Already have an account? <a href="/login">Login here</a></p>
+        </div>
+    </div>
+</body>
+</html>
