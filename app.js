@@ -283,7 +283,7 @@ app.get("/sangam/addnewenquiry", isAuthenticated, (req, res) => {
 });
 
 app.post("/sangam/newinquiryform", isAuthenticated, (req, res) => {
-    const { line_number,customerCode,customerName, material, material_description, quantity, uom, rate, currency, validity_date, remarks,employeeName} = req.body;
+    const {customerCode,customerName, material, material_description, quantity, uom, rate, currency, validity_date, remarks,employeeName} = req.body;
     const userId = req.user.id;  // Get the logged-in user's ID
 
     const q = "INSERT INTO enquiry (customerCode,customerName, material, material_description, quantity, uom, rate, currency, validity_date, remarks, employeeName,employee_id) VALUES (?,?,?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
