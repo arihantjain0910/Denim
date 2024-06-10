@@ -417,7 +417,7 @@ app.post('/submit', (req, res) => {
 
             const mailOptions = {
                 from: 'testit@sangamgroup.com',
-                to: 'denimpd1@sangamgroup.com',
+                to: 'testit@sangamgroup.com',
                 subject: 'Enquiry Form Data',
                 html: generateTable(tableData)
             };
