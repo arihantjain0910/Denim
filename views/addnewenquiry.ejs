@@ -24,6 +24,10 @@
         border-radius: 5px;
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
       }
+     
+        /* CSS to make the input text bold */
+        
+ 
     </style>
   </head>
   <body>
@@ -100,11 +104,11 @@
               <input type="float" class="form-control" id="rate" name="rate" placeholder="Enter Rate"min="0" step="any" required>
             </div>
             <div class="form-group col-md-6">
-              <label for="currency" class="required">Unit Of Measurement (UOM)</label>
+              <label for="currency" class="required">Currency</label>
               <select class="form-control" id="currency" name="currency" required>
                 <option value="" disabled selected>Select Currency</option>
                 <option value="INR">INR</option>
-                <option value="USD">USD</option>
+                <option value="USD">list-unstyled</option>
                 
                 <!-- Add more options as needed -->
               </select>
@@ -164,17 +168,20 @@
     
   // Function to calculate the date and time 72 hours from now and set it in the date input
   function setDateInput() {
-      const dateInput = document.getElementById('dateInput');
+    const dateInput = document.getElementById('dateInput');
 
-      // Get the current time
-      const now = new Date();
+    // Get the current time
+    const now = new Date();
 
-      // Calculate the time 72 hours from now
-      const futureTime = new Date(now.getTime() + 72 * 60 * 60 * 1000);
+    // Calculate the time 72 hours from now
+    const futureTime = new Date(now.getTime() + 72 * 60 * 60 * 1000);
 
-      // Set the value of the date input
-      dateInput.value = futureTime.toISOString().split('T')[0];
-  }
+    // Extract only the date part
+    const futureDate = futureTime.toISOString().split('T')[0];
+
+    // Set the value of the date input
+    dateInput.value = futureDate;
+}
 
 
 
@@ -247,6 +254,26 @@
     var charLength = this.value.length;
     // Update the character count text
     charCount.textContent = charLength + ' / 50 characters';
+  });
+</script>
+<script>
+  document.getElementById('material').addEventListener('input', function() {
+      this.value = this.value.toUpperCase();
+  });
+</script>
+<script>
+  document.getElementById('customerName').addEventListener('input', function() {
+      this.value = this.value.toUpperCase();
+  });
+</script>
+<script>
+  document.getElementById('material_description').addEventListener('input', function() {
+      this.value = this.value.toUpperCase();
+  });
+</script>
+<script>
+  document.getElementById('remarks').addEventListener('input', function() {
+      this.value = this.value.toUpperCase();
   });
 </script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
