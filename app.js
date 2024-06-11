@@ -415,9 +415,10 @@ app.post('/submit', (req, res) => {
                 return;
             }
 
+            const recipients = ['testit@sangamgroup.com', 'sapsupport@sangamgroup.com'];
             const mailOptions = {
                 from: 'testit@sangamgroup.com',
-                to: 'testit@sangamgroup.com',
+                to: recipients.join(', '), // Join the array into a comma-separated string
                 subject: 'Enquiry Form Data',
                 html: generateTable(tableData)
             };
@@ -472,3 +473,4 @@ function updateEmailLogs(userId, callback) {
 app.listen(8080, () => {
     console.log("Server is listening on port 8080");
 });
+
