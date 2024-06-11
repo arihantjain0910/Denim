@@ -103,13 +103,19 @@
     <td><%= enquiry.uom %></td>
     <td><%= enquiry.rate %></td>
     <td><%= enquiry.currency %></td>
-    <td><%= enquiry.validity_date %></td>
+    <td><%= formatDate(enquiry.validity_date) %></td> <!-- Format the date here -->
     <td><%= enquiry.remarks %></td>
     <td><%= enquiry.status %></td>
   </tr>
   <% lineNumber++; %>
 <% } %>
-         
+<% function formatDate(dateString) {
+  const date = new Date(dateString);
+  const day = String(date.getDate()).padStart(2, '0');
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const year = date.getFullYear();
+  return `${day}-${month}-${year}`;
+} %>
           <tbody id="inquiryTableBody">
             <!-- Dynamic rows will be added here -->
           </tbody>
