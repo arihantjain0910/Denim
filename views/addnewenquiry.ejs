@@ -116,7 +116,7 @@
           </div>
             <div class="form-group">
               <label for="validity_date" class="required">Validity Date</label>
-              <input type="date" class="form-control" id="dateInput" name="validity_date" placeholder="Enter Validity Date In Format ddmmyyyy" readonly>
+              <input type="date" class="form-control" id="dateInput" name="validity_date" placeholder="Enter Validity Date In Format ddmmyyyy">
             </div>
             <div class="form-group">
               <label for="remarks">Remarks</label>
@@ -168,21 +168,21 @@
     <script>
     
   // Function to calculate the date and time 72 hours from now and set it in the date input
-  function setDateInput() {
-    const dateInput = document.getElementById('dateInput');
+//   function setDateInput() {
+//     const dateInput = document.getElementById('dateInput');
 
-    // Get the current time
-    const now = new Date();
+//     // Get the current time
+//     const now = new Date();
 
-    // Calculate the time 72 hours from now
-    const futureTime = new Date(now.getTime() + 72 * 60 * 60 * 1000);
+//     // Calculate the time 72 hours from now
+//     const futureTime = new Date(now.getTime() + 72 * 60 * 60 * 1000);
 
-    // Extract only the date part
-    const futureDate = futureTime.toISOString().split('T')[0];
+//     // Extract only the date part
+//     const futureDate = futureTime.toISOString().split('T')[0];
 
-    // Set the value of the date input
-    dateInput.value = futureDate;
-}
+//     // Set the value of the date input
+//     dateInput.value = futureDate;
+// }
 
 
 
