@@ -78,6 +78,7 @@
           <form class="form-control"> 
             <tr style="color:rgb(233, 30, 30); background-color: rgb(219, 219, 219)">
               <th>Line Number</th>
+              <th>Employee Name</th>
               <th>Customer Code</th>
               <th>Customer Name</th>
               <th>Material</th>
@@ -89,12 +90,14 @@
               <th>Validity Date</th>
               <th>Remarks</th>
               <th>Status</th>
+              
             </tr>
           </form>
           <% let lineNumber = 1; %>
 <% for(let enquiry of enquirys){ %>
   <tr>
     <td><%= lineNumber %></td>
+    <td><%= enquiry.employeeName %></td>
     <td><%= enquiry.customerCode %></td>
     <td><%= enquiry.customerName %></td>
     <td><%= enquiry.material %></td>
@@ -106,6 +109,7 @@
     <td><%= formatDate(enquiry.validity_date) %></td> <!-- Format the date here -->
     <td><%= enquiry.remarks %></td>
     <td><%= enquiry.status %></td>
+
   </tr>
   <% lineNumber++; %>
 <% } %>
