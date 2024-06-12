@@ -384,9 +384,9 @@ function checkEmailSent(userId, callback) {
 }
 
 function generateTable(data) {
-    let html = '<table border="1"><tr><th>Customer Code</th><th>Customer Name</th><th>Material</th><th>Material Description</th><th>Quantity</th><th>UOM</th><th>Rate</th><th>Currency</th><th>Validity Date</th><th>Remarks</th><th>Status</th></tr>';
+    let html = '<table border="1"><tr><th>Employee Name</th><th>Customer Code</th><th>Customer Name</th><th>Material</th><th>Material Description</th><th>Quantity</th><th>UOM</th><th>Rate</th><th>Currency</th><th>Validity Date</th><th>Remarks</th><th>Status</th></tr>';
     data.forEach(item => {
-        html += `<tr><td>${item.customerCode}</td><td>${item.customerName}</td><td>${item.material}</td><td>${item.material_description}</td><td>${item.quantity}</td><td>${item.uom}</td><td>${item.rate}</td><td>${item.currency}</td><td>${item.validity_date}</td><td>${item.remarks}</td><td>${item.status}</td></tr>`;
+        html += `<tr><td>${item.employeeName}</td><td>${item.customerCode}</td><td>${item.customerName}</td><td>${item.material}</td><td>${item.material_description}</td><td>${item.quantity}</td><td>${item.uom}</td><td>${item.rate}</td><td>${item.currency}</td><td>${item.validity_date}</td><td>${item.remarks}</td><td>${item.status}</td></tr>`;
     });
     html += '</table>';
     return html;
